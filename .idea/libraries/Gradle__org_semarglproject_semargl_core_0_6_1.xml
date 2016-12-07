@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.semarglproject:semargl-core:0.6.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.semarglproject/semargl-core/0.6.1/8f9fcd16386db91dc8d300ce8c6e960223a213ba/semargl-core-0.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.semarglproject/semargl-core/0.6.1/5c16deb1ea3ccec7c2584b7020408cff99ac4ece/semargl-core-0.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

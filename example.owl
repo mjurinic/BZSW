@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://mjurinic.com/bzsw/ontologies/example.owl#"
+     xml:base="http://mjurinic.com/bzsw/ontologies/example.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:example="http://mjurinic.com/bzsw/ontologies/example.owl#">
+    <owl:Ontology rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#isEating -->
+
+    <owl:ObjectProperty rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#isEating"/>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#isFood -->
+
+    <owl:ObjectProperty rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#isFood"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#hasWings -->
+
+    <owl:DatatypeProperty rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#hasWings">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Animal -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Animal"/>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Bat -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Bat">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#MammalAnimal"/>
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#WingedAnimal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#isEating"/>
+                <owl:someValuesFrom rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Mosquito"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Bear -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Bear">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#MammalAnimal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#MammalAnimal -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#MammalAnimal">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Mosquito -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Mosquito">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#WingedAnimal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#isFood"/>
+                <owl:someValuesFrom rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Bat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Wasp"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Wasp -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Wasp">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#WingedAnimal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#WingedAnimal -->
+
+    <owl:Class rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#WingedAnimal">
+        <rdfs:subClassOf rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#EuropeanHornetWasp -->
+
+    <owl:NamedIndividual rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#EuropeanHornetWasp">
+        <rdf:type rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Wasp"/>
+        <hasWings rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</hasWings>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#Megabat -->
+
+    <owl:NamedIndividual rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#Megabat">
+        <rdf:type rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Bat"/>
+        <isEating rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#TigerMosquito"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#PolarBear -->
+
+    <owl:NamedIndividual rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#PolarBear">
+        <rdf:type rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Bear"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://mjurinic.com/bzsw/ontologies/example.owl#TigerMosquito -->
+
+    <owl:NamedIndividual rdf:about="http://mjurinic.com/bzsw/ontologies/example.owl#TigerMosquito">
+        <rdf:type rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Mosquito"/>
+        <isFood rdf:resource="http://mjurinic.com/bzsw/ontologies/example.owl#Megabat"/>
+        <hasWings rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</hasWings>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.3.20160319-0906) https://github.com/owlcs/owlapi -->
+

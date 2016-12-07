@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.semarglproject:semargl-sesame:0.6.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.semarglproject/semargl-sesame/0.6.1/1cb9145d1ca1b2a4c8ef6f40b77c6bba43088ca1/semargl-sesame-0.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.semarglproject/semargl-sesame/0.6.1/dfc57e60411ede9e7303323142b321b24f771822/semargl-sesame-0.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
