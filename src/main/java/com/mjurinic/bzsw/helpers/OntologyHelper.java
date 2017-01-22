@@ -11,7 +11,10 @@ public class OntologyHelper {
 
     private static OntologyHelper instance;
 
+    // An OWLOntologyManager manages a set of ontologies. It is the main point for creating, loading and accessing ontologies.
     private OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+
+    // An interface for creating entities, class expressions and axioms.
     private OWLDataFactory dataFactory = OWLManager.getOWLDataFactory();
 
     private OntologyHelper() {}

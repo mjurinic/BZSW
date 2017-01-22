@@ -1,12 +1,13 @@
 package com.mjurinic.bzsw;
 
 import com.mjurinic.bzsw.helpers.OntologyHelper;
-import org.semanticweb.owlapi.model.OWLAxiomChange;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.*;
+import uk.ac.manchester.cs.jfact.JFactFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
@@ -104,6 +105,61 @@ public class Main {
         );
 
         updateOntology(ontology, patches);
+
+
+        // Reasoner setup
+        OWLReasonerFactory reasonerFactory = new JFactFactory();
+
+        OWLReasonerConfiguration config = new SimpleConfiguration(50000);
+        OWLReasoner reasoner = reasonerFactory.createReasoner(ontology, config);
+
+        // Ask the reasoner to classify the ontology
+        reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
+
+        // get a list of unsatisfiable classes
+        Node<OWLClass> bottomNode = reasoner.getUnsatisfiableClasses();
+
+        // leave owl:Nothing out
+        Set<OWLClass> unsatisfiable = bottomNode.getEntitiesMinusBottom();
+
+        if (!unsatisfiable.isEmpty()) {
+            System.out.println("The following classes are unsatisfiable: ");
+
+            for (OWLClass cls : unsatisfiable) {
+                System.out.println(cls.getIRI().getFragment());
+            }
+        } else {
+            System.out.println("There are no unsatisfiable classes");
+        }
+
+        // Look up and print all direct subclasses for all classes
+        for (OWLClass c : ontology.getClassesInSignature()) {
+            NodeSet<OWLClass> subClasses = reasoner.getSubClasses(c, true);
+
+            for (OWLClass subClass : subClasses.getFlattened()) {
+                System.out.println(subClass.getIRI().getFragment() + "\tsubclass of\t"
+                        + c.getIRI().getFragment());
+            }
+        }
+
+        // for each class, look up the instances
+        for (OWLClass c : ontology.getClassesInSignature()) {
+            NodeSet<OWLNamedIndividual> instances = reasoner.getInstances(c, true);
+
+            for (OWLNamedIndividual i : instances.getFlattened()) {
+                System.out.println(i.getIRI().getFragment() + "\tinstance of\t" + c.getIRI().getFragment());
+
+                // look up all property assertions
+                for (OWLObjectProperty op : ontology.getObjectPropertiesInSignature()) {
+                    NodeSet<OWLNamedIndividual> petValuesNodeSet = reasoner.getObjectPropertyValues(i, op);
+                    for (OWLNamedIndividual value : petValuesNodeSet.getFlattened()) {
+                        System.out.println(i.getIRI().getFragment() + "\t"
+                                + op.getIRI().getFragment() + "\t"
+                                + value.getIRI().getFragment());
+                    }
+                }
+            }
+        }
     }
 
     /**
